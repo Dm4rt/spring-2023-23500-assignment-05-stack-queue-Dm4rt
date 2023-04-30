@@ -21,15 +21,22 @@ stack::~stack(){
 }
 
 void stack::push(std::string data){
-  Node *tmp = new Node(data);
-  tmp->setNext(head);
-  head = tmp;
-  
-  //increment size for ease
-  size++;
+  if(head==nullptr){
+  	Node *tmp = new Node(data);
+ 	head=tmp;
+ 	size++;
+  }	
+  else{
+	Node *tmp = new Node(data);
+	tmp->setNext(head);
+	head = tmp;
+	  
+	//increment size for ease
+	size++;
+  }
 }
 
-int stack::pop(){
+std::string stack::pop(){
 	//Check for empty stack
 	if (head == nullptr){
     		throw std::out_of_range("Tried to remove from empty stack");
@@ -41,7 +48,7 @@ int stack::pop(){
 		//if not set head to node after head
 		Node *tmp = head->getNext();
 		Node *prevHead = head;
-		int data = std::stoi(head->getData());
+		std::string data = (head->getData());
 		delete prevHead;
 		head = tmp;
 		size--;
@@ -50,7 +57,7 @@ int stack::pop(){
 	}else{
 		//else delete head
 		Node *prevHead = head;
-		int data = std::stoi(head->getData());
+		std::string data = (head->getData());
 		delete prevHead;
 		head = nullptr;
 		size=0;
@@ -60,13 +67,13 @@ int stack::pop(){
 	
 }
 
-int stack::top(){
+std::string stack::top(){
 	//Check for empty stack
 	if (head == nullptr){
     		throw std::out_of_range("Tried to read from empty stack");
   	}
   	else{
-  		int data = std::stoi(head->getData());
+  		std::string data = (head->getData());
   		return data;
   	}
 }

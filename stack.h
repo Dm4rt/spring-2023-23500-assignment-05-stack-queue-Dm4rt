@@ -10,8 +10,8 @@ class stack{
   stack();
   ~stack();
   void push(std::string data);
-  int pop(); 
-  int top();
+  std::string pop(); 
+  std::string top();
   
   bool is_empty();
 };
