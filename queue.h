@@ -4,7 +4,7 @@
 
 class queue{
 	private:
-		vector<std::string> line;
+		std::vector<std::string> line;
 		const int MAX_SIZE;
 		int head, tail;
 		
